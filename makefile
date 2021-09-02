@@ -2,9 +2,15 @@ CC=gcc
 COPTIONS=-Wall
 
 
-all:linklist
-	./linklist
 
+all:clean linklist
+
+clean:
+	rm *.o linklist
+
+test: all
+	./linklist
+	
 linklist: test.o linklist.o
 	$(CC) $(COPTIONS) $? -o $@
 

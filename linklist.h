@@ -22,7 +22,9 @@ typedef struct linklist
 #define LLAST -1
 #define LFIRST -2
 
-/* list operations */
+/*******************
+ * list operations 
+ *******************/
 
 // create a new list
 linklist lopen();
@@ -30,32 +32,34 @@ linklist lopen();
 // NOTE: the function does not free the memory pointed by "data", it frees only the memory of the node.
 void lclose(linklist l);
 
+// Add the element "data" at the "at" position.
+void ladd(linklist l, long int at, void *data);
+// Delete the element at the "at" position.
+// NOTE: the function does not free the memory pointed by "data", it frees only the memory of the node.
+void ldel(linklist l, long int at);
+
+// Get the element at the "at" position.
+void *lget(linklist l, long int at);
+// Modify the element in the "at" position.
+void *lset(linklist l, long int at, void *data);
+
 // check if list is empty
 int lempty(linklist l);
 // Reset the list by deleting all nodes in it.
 // NOTE: the function does not free the memory pointed by "data", it frees only the memory of the node.
 void lreset(linklist l);
 
-// Add the element "data" to the position "at".
-void ladd(linklist l, long int at, void *data);
-// Delete the element in "at" position.
-// NOTE: the function does not free the memory pointed by "data", it frees only the memory of the node.
-void ldel(linklist l, long int at);
-
-// Get the element at the "at" position
-void *lget(linklist l, long int at);
-// Modify the element in the "at" position.
-void *lset(linklist l, long int at, void *data);
-
-// Sort the list using the "qsort" algorithm.
+// Sort the list using the QuickSort algorithm.
 void lsort(linklist l, long int from, long int to, int selector(void *, void *));
 
 // display the list
 void lprint(linklist l);
 
-/* Iterator functions */
+/*******************
+ * Iterator functions
+ *******************/
 
-// Create a new iterator
+// Create an iterator
 iterator lat(linklist l, int at);
 // Increment by 1 the iterator "i".
 void linc(iterator *i);
